@@ -1,0 +1,22 @@
+# Build results
+bin/
+obj/
+
+# VS Code config
+.vscode/
+
+# Visual Studio config
+.vs/
+*.user
+*.suo
+
+# NuGet Packages
+*.nupkg
+project.lock.json
+packages/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp

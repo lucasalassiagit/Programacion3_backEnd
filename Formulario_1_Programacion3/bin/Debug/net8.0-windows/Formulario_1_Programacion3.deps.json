@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Formulario_1_Programacion3/1.0.0": {
+        "runtime": {
+          "Formulario_1_Programacion3.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Formulario_1_Programacion3/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

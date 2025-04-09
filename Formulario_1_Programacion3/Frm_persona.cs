@@ -26,20 +26,38 @@ namespace Formulario_1_Programacion3
         {
             try
             {
-                var persona = new Persona
+                if(personaEdicion == null)
                 {
-                    Nombre = txtNombre.Text,
-                    Apellido = txtApellido.Text,
-                    Dni = Convert.ToInt32(txtDni.Text),
-                    Cuit = maskedCUIT.Text,
-                    Futbol = chkFutbol.Checked ? 'F' : ' ',
-                    Basquet = chkBasquet.Checked ? 'B' : ' ',
-                    Otros = chkOtros.Checked ? 'O' : ' ',
-                    Genero = ObtenerValor(),
-                };
-                _listPersona.Add(persona);
-                GuardarDatos();
-                LimpiarCampos();
+                    var persona = new Persona
+                    {
+                        Nombre = txtNombre.Text,
+                        Apellido = txtApellido.Text,
+                        Dni = Convert.ToInt32(txtDni.Text),
+                        Cuit = maskedCUIT.Text,
+                        Futbol = chkFutbol.Checked ? 'F' : ' ',
+                        Basquet = chkBasquet.Checked ? 'B' : ' ',
+                        Otros = chkOtros.Checked ? 'O' : ' ',
+                        Genero = ObtenerValor(),
+                    };
+                    _listPersona.Add(persona);
+                    GuardarDatos();
+                    LimpiarCampos();
+                }
+
+                else
+                {
+                    personaEdicion.Nombre = txtNombre.Text;
+                    personaEdicion.Apellido = txtApellido.Text;
+                    personaEdicion.Futbol = chkFutbol.Checked ? 'F' : ' ';
+                    personaEdicion.Basquet = chkBasquet.Checked ? 'B' : ' ';
+                    personaEdicion.Otros = chkOtros.Checked ? 'O' : ' ';
+                    chkOtros.Checked = personaEdicion.Otros == 'O' ? true : false;
+                    personaEdicion.Genero = ObtenerValor();
+                    
+                    GuardarDatos();
+                    LimpiarCampos();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -93,9 +111,9 @@ namespace Formulario_1_Programacion3
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if(dataGrid.SelectedRows.Count == 0)
+            if (dataGrid.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Debe Seleccionar una persona de la lista","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Debe Seleccionar una persona de la lista", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -103,7 +121,8 @@ namespace Formulario_1_Programacion3
             string cuitSeleccionado = fila.Cells["Cuit"].Value.ToString();
             personaEdicion = _listPersona.FirstOrDefault(p => p.Cuit == cuitSeleccionado);
 
-            if(personaEdicion != null)
+            
+            if (personaEdicion != null)
             {
                 txtNombre.Text = personaEdicion.Nombre;
                 txtApellido.Text = personaEdicion.Apellido;
@@ -113,12 +132,17 @@ namespace Formulario_1_Programacion3
                 chkBasquet.Checked = personaEdicion.Basquet == 'B' ? true : false;
                 chkOtros.Checked = personaEdicion.Otros == 'O' ? true : false;
                 rbMasculino.Checked = personaEdicion.Genero == 'M' ? true : false;
-                rbFemenino.Checked = personaEdicion.Genero == 'F' ? true: false;
+                rbFemenino.Checked = personaEdicion.Genero == 'F' ? true : false;
                 rbNoBinario.Checked = personaEdicion.Genero == 'N' ? true : false;
 
                 maskedCUIT.ReadOnly = true;
                 txtDni.ReadOnly = true;
             }
+        }
+
+        private void btoLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
         }
     }
 }

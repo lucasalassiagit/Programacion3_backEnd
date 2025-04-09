@@ -51,13 +51,14 @@
             txtNombre = new TextBox();
             dataGrid = new DataGridView();
             btoLimpiar = new Button();
+            btnEditar = new Button();
             Gbpersona.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid).BeginInit();
             SuspendLayout();
             // 
             // btoGuardar
             // 
-            btoGuardar.Location = new Point(552, 282);
+            btoGuardar.Location = new Point(684, 284);
             btoGuardar.Margin = new Padding(2, 1, 2, 1);
             btoGuardar.Name = "btoGuardar";
             btoGuardar.Size = new Size(81, 22);
@@ -307,11 +308,22 @@
             btoLimpiar.Text = "Limpiar";
             btoLimpiar.UseVisualStyleBackColor = true;
             // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(427, 282);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(75, 23);
+            btnEditar.TabIndex = 14;
+            btnEditar.Text = "Editar Persona";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
+            // 
             // Frm_persona
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(788, 325);
+            Controls.Add(btnEditar);
             Controls.Add(btoLimpiar);
             Controls.Add(dataGrid);
             Controls.Add(Gbpersona);
@@ -351,5 +363,6 @@
         private RadioButton rbMasculino;
         private MaskedTextBox maskedCUIT;
         private Label label6;
+        private Button btnEditar;
     }
 }

@@ -8,8 +8,9 @@ namespace Formulario_1_Programacion3
 {
     public partial class Frm_persona : Form
     {
-        private List<Persona> _listPersona = new List<Persona> ();
-        
+        private Persona personaEdicion = null;
+        private List<Persona> _listPersona = new List<Persona>();
+
         public Frm_persona()
         {
             InitializeComponent();
@@ -90,6 +91,35 @@ namespace Formulario_1_Programacion3
             return ' ';
         }
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if(dataGrid.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Debe Seleccionar una persona de la lista","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
+
+            var fila = dataGrid.SelectedRows[0];
+            string cuitSeleccionado = fila.Cells["Cuit"].Value.ToString();
+            personaEdicion = _listPersona.FirstOrDefault(p => p.Cuit == cuitSeleccionado);
+
+            if(personaEdicion != null)
+            {
+                txtNombre.Text = personaEdicion.Nombre;
+                txtApellido.Text = personaEdicion.Apellido;
+                txtDni.Text = personaEdicion.Dni.ToString();
+                maskedCUIT.Text = personaEdicion.Cuit;
+                chkFutbol.Checked = personaEdicion.Futbol == 'F' ? true : false;
+                chkBasquet.Checked = personaEdicion.Basquet == 'B' ? true : false;
+                chkOtros.Checked = personaEdicion.Otros == 'O' ? true : false;
+                rbMasculino.Checked = personaEdicion.Genero == 'M' ? true : false;
+                rbFemenino.Checked = personaEdicion.Genero == 'F' ? true: false;
+                rbNoBinario.Checked = personaEdicion.Genero == 'N' ? true : false;
+
+                maskedCUIT.ReadOnly = true;
+                txtDni.ReadOnly = true;
+            }
+        }
     }
 }
 

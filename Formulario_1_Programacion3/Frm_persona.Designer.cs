@@ -52,13 +52,14 @@
             dataGrid = new DataGridView();
             btoLimpiar = new Button();
             btnEditar = new Button();
+            btnEliminar = new Button();
             Gbpersona.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid).BeginInit();
             SuspendLayout();
             // 
             // btoGuardar
             // 
-            btoGuardar.Location = new Point(684, 284);
+            btoGuardar.Location = new Point(670, 281);
             btoGuardar.Margin = new Padding(2, 1, 2, 1);
             btoGuardar.Name = "btoGuardar";
             btoGuardar.Size = new Size(81, 22);
@@ -69,7 +70,7 @@
             // 
             // BtoAlta
             // 
-            BtoAlta.Location = new Point(260, 282);
+            BtoAlta.Location = new Point(165, 284);
             BtoAlta.Margin = new Padding(2, 1, 2, 1);
             BtoAlta.Name = "BtoAlta";
             BtoAlta.Size = new Size(81, 22);
@@ -300,7 +301,7 @@
             // 
             // btoLimpiar
             // 
-            btoLimpiar.Location = new Point(30, 282);
+            btoLimpiar.Location = new Point(21, 284);
             btoLimpiar.Margin = new Padding(2, 1, 2, 1);
             btoLimpiar.Name = "btoLimpiar";
             btoLimpiar.Size = new Size(81, 22);
@@ -311,19 +312,30 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(427, 282);
+            btnEditar.Location = new Point(301, 281);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
+            btnEditar.Size = new Size(106, 23);
             btnEditar.TabIndex = 14;
             btnEditar.Text = "Editar Persona";
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(451, 281);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(75, 23);
+            btnEliminar.TabIndex = 15;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // Frm_persona
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(788, 325);
+            Controls.Add(btnEliminar);
             Controls.Add(btnEditar);
             Controls.Add(btoLimpiar);
             Controls.Add(dataGrid);
@@ -365,5 +377,6 @@
         private MaskedTextBox maskedCUIT;
         private Label label6;
         private Button btnEditar;
+        private Button btnEliminar;
     }
 }

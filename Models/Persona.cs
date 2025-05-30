@@ -14,6 +14,10 @@ namespace CrudMVCApp.Models
         public bool Otros { get; set; }
         public char Genero { get; set; }
 
+        //Coleccion de direcciones asociada a la persona (relacion uno a muchos)
+        public ICollection<Direccion> Direcciones { get; set; }
+
+
         public Persona() { }
     }
 

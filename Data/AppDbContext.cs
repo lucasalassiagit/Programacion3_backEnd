@@ -10,5 +10,17 @@ namespace CrudMVCApp.Data
         }
         public DbSet<Persona> Personas { get; set; }
 
+        public DbSet<Direccion> Direccion { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Persona>()
+                   .HasMany(p => p.Direcciones)
+                   .WithOne(d => d.Persona)
+                   .HasForeignKey(d => d.PersonaId);
+        }
+
     }
 }
